@@ -1,6 +1,6 @@
 name: 'Submodule Checkout'
 
-description: 'Checkout the repository and its submodules'
+description: 'Checkout the submodules of the repositories'
 
 inputs:
   ssh-key:
@@ -10,9 +10,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: 'Checkout repository'
-      uses: actions/checkout@v3
-
     - name: 'Checkout submodules'
       run: |
         if [[ -n "${{ inputs.ssh-key }}" ]]; then
