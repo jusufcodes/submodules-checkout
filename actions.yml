@@ -11,6 +11,7 @@ runs:
   using: 'composite'
   steps:
     - name: 'Checkout submodules'
+      using: node16
       run: |
         if [[ -n "${{ inputs.ssh-key }}" ]]; then
           mkdir -p ~/.ssh/
