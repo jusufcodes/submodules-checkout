@@ -1,0 +1,21 @@
+name: 'Submodule Checkout'
+
+description: 'Checkout the repository and its submodules'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Checkout repository'
+      uses: actions/checkout@v3
+
+    - name: 'Checkout submodules'
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.ssh }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+        git submodule init
+        git submodule update
+
+        ls -ll src/core-components
