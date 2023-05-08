@@ -1,12 +1,9 @@
 name: 'Submodule Checkout'
-
 description: 'Checkout the submodules of the repositories'
-
 inputs:
   ssh-key:
     description: 'Optional SSH key'
     required: false
-
 runs:
   using: 'composite'
   steps:
